@@ -52,7 +52,8 @@ class Pagecontroller extends CI_Controller{
 
 	public function deletepost($postID){
 		$feedback = $this->apmodel->deletepost($postID);
-		$this->session->set_flashdata('error_msg', 'Fail to created post');
+		$this->session->set_flashdata('success_msg', 'Post created successful');
+		redirect(base_url());
 	}
 
 	public function updatepost($postID){

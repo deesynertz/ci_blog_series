@@ -20,15 +20,23 @@ class Post_model extends CI_Model{
 
 	}
 
-	public function deletepost($formArray){
+	public function deletepost($postID)
+	{
 		// INSERT INTO post(tittle,description,cr_by) VALUES(?,?,?);
-		$query = $this->db->delete('post', $formArray); 
+		$query = $this->db->where('pID', $postID);
+		$query = $this->db->delete('post'); 
 
 	}
 
-	public function updatepost($formArray){
+	public function getPostID($postID)
+	{
+		$query = $this->db->where('pID', $postID);
+		return $query = $this->db->get('post')->row_array();
+	}
+
+	public function updatepost($postID,$formArray){
 		// INSERT INTO post(tittle,description,cr_by) VALUES(?,?,?);
-		$query = $this->db->insert('post', $formArray); 
+		$query = $this->db->insert('post', $postID); 
 
 	}
 }
