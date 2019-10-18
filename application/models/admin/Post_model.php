@@ -14,21 +14,21 @@ class Post_model extends CI_Model{
 	}
 
 
-	public function creatpost(){
+	public function creatpost($formArray){
+		// INSERT INTO post(tittle,description,cr_by) VALUES(?,?,?);
+		$query = $this->db->insert('post', $formArray); 
 
-		$creater = 1;
+	}
 
-		$createPost = array(
-			'tittle' => $this->input->post('tittle'), 
-			'description' => $this->input->post('description'),
-			'cr_by' => $creater
-		);
+	public function deletepost($formArray){
+		// INSERT INTO post(tittle,description,cr_by) VALUES(?,?,?);
+		$query = $this->db->delete('post', $formArray); 
 
-		$query = $this->db->insert('post', $createPost);
-		if ($this->db->affected_rows() > 0) {
-			return true;
-		}else{
-			return false;
-		}
+	}
+
+	public function updatepost($formArray){
+		// INSERT INTO post(tittle,description,cr_by) VALUES(?,?,?);
+		$query = $this->db->insert('post', $formArray); 
+
 	}
 }

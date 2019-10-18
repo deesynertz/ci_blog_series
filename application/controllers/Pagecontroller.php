@@ -26,22 +26,38 @@ class Pagecontroller extends CI_Controller{
 		$data['tittle'] = 'CIBlog';
 		$data['heading'] = 'Add Post';
 
-		$this->load->view('templates/header',$data);
-		$this->load->view('admin/addpost', $data);
-		$this->load->view('templates/footer');
-	}
+		$this->form_validation->set_rules('tittle','Tittle','required');
+		$this->form_validation->set_rules('description','Description','required');
 
-	public function creatpost(){
+		if($this->form_validation->run() == false){
+			$this->load->view('templates/header',$data);
+			$this->load->view('admin/addpost', $data);
+			$this->load->view('templates/footer');
 
-		$feedback = $this->apmodel->creatpost();
-
-		if ($feedback) {
-			$this->session->set_flashdata('success_msg', 'Post created successful');
 		}else{
-			$this->session->set_flashdata('error_msg', 'Fail to created post');
+
+			//save post data
+			$formArray = array();
+			$formArray['tittle'] = $this->input->post('tittle');
+			$formArray['description'] = $this->input->post('description');
+			$formArray['cr_by'] = 1;
+
+			$feedback = $this->apmodel->creatpost($formArray);
+			$this->session->set_flashdata('success_msg', 'Post created successful');
+			redirect(base_url());
 		}
 
-		redirect(base_url());
+		
+	}
+
+	public function deletepost($postID){
+		$feedback = $this->apmodel->deletepost($postID);
+		$this->session->set_flashdata('error_msg', 'Fail to created post');
+	}
+
+	public function updatepost($postID){
+		$feedback = $this->apmodel->updatepost($postID);
+		$this->session->set_flashdata('error_msg', 'Fail to created post');
 	}
 }
 

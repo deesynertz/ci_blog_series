@@ -1,22 +1,25 @@
 <div class="container">
+	<div class="row">
 	<h3><?= $heading; ?></h3>
-	<hr>
-	<a href="<?php echo base_url('pagecontroller'); ?>" class="btn btn-primary">Back</a>
-	<br>
+        <div class="col-md-6">
+			<a href="<?php echo base_url('pagecontroller'); ?>" class="btn btn-primary">Back</a>
+			<br>
+			<form class="" method="POST" action="<?php echo base_url('pagecontroller/addpost'); ?>">
+				<div class="form-group">
+				    <label>Tittle</label>
+				    <input type="text" name="tittle" value="<?php echo set_value('tittle'); ?>" class="form-control" placeholder="Tittle">
+				    <?php echo form_error('tittle')?>
+				</div>
+				<div class="form-group">
+				    <label>description</label>
+				    <textarea class="form-control" value="<?php echo set_value('description'); ?>" name="description" placeholder="Write anything"></textarea>
+				    <?php echo form_error('description')?>
+				 </div>
 
-	<form class="" method="POST" action="<?php echo base_url('pagecontroller/creatpost'); ?>">
-		<div class="form-group">
-		    <label>Tittle</label>
-		    <input type="text" name="tittle" class="form-control" placeholder="Tittle" required>
-		</div>
-		<div class="form-group">
-		    <label>description</label>
-		    <textarea class="form-control" name="description" placeholder="Write anything" required></textarea>
-		 </div>
-
-		 <div class="form-group">
-		 	<input type="submit" value="Submit" class="btn btn-default">
-		 </div>
-	</form>
-        
+				 <div class="form-group">
+				 	<input type="submit" value="Submit" class="btn btn-default">
+				 </div>
+			</form>
+        </div>
+    </div>      
 </div>

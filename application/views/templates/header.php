@@ -11,5 +11,6 @@
     		<!-- <h2><span class="glyphicon glyphicon-home"></span>&nbsp; Welcome to my blog</h2> -->
     	</div>
     </div>
+    <hr>
 
 	
