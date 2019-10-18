@@ -7,7 +7,7 @@
 	<form class="" method="POST" action="<?php echo base_url('pagecontroller/creatpost'); ?>">
 		<div class="form-group">
 		    <label>Tittle</label>
-		    <input type="text" class="form-control" placeholder="Tittle" required>
+		    <input type="text" name="tittle" class="form-control" placeholder="Tittle" required>
 		</div>
 		<div class="form-group">
 		    <label>description</label>

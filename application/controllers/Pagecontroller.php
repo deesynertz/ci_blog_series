@@ -33,7 +33,15 @@ class Pagecontroller extends CI_Controller{
 
 	public function creatpost(){
 
-		//$data['allposts'] = $this->apmodel->get_postall();
+		$feedback = $this->apmodel->creatpost();
+
+		if ($feedback) {
+			$this->session->set_flashdata('success_msg', 'Post created successful');
+		}else{
+			$this->session->set_flashdata('error_msg', 'Fail to created post');
+		}
+
+		redirect(base_url());
 	}
 }
 
